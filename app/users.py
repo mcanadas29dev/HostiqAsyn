@@ -72,12 +72,12 @@ class UserManager(UUIDIDMixin, BaseUserManager[User, uuid.UUID]):
             verify_url = f"{settings.frontend_url}/verify?token={token}"
             await send_email(
                 to=user.email,
-                subject="Verifica tu correo en HostIQ",
+                subject="Verificación de tu correo en HostIQ",
                 body=(
                     f"Hola {user.nombre or 'Nuevo Usuario'} {user.apellidos or ''},\n\n"
-                    f"Gracias por registrarte.\n\n"
+                    f"Gracias por registrarte en nuestra plataforma.\n\n"
                     f"Confirma tu correo para seguir el proceso de alta en HostIQ, "
-                    f"abriendo este enlace:\n"
+                    f"abriendo este enlace:\n\n"
                     f"{verify_url}\n\n"
                     f"El enlace caduca en 24 horas."
                 ),
