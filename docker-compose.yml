@@ -15,6 +15,18 @@ services:
     networks:
       - hostiq-net
 
+  watchtower:
+    image: containrrr/watchtower:latest
+    container_name: hostiqasyn-watchtower
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - WATCHTOWER_CLEANUP=true                        # borra imágenes viejas
+      - WATCHTOWER_LABEL_ENABLE=true                   # solo actualiza las etiquetadas
+      - WATCHTOWER_POLL_INTERVAL=300                   # cada 5 minutos
+    # No necesita red propia, usa la del host
+
 networks:
   hostiq-net:
     driver: bridge
