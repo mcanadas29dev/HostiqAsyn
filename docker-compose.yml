@@ -1,0 +1,23 @@
+services:
+  api:
+    build: .
+    image: mcanadas29dev/proyecto:latest
+    container_name: hostiq-api
+    restart: unless-stopped
+    ports:
+      - "8150:8150"
+    env_file:
+      - .env
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://hostiqes:${DB_PASSWORD}@host.docker.internal:5433/hostiqasyn
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - hostiq-net
+
+networks:
+  hostiq-net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.32.0.0/16
