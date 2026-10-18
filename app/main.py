@@ -1,8 +1,10 @@
 from fastapi import FastAPI
 
-from app.config import settings
-from app.schemas import UserCreate, UserRead, UserUpdate
-from app.users import auth_backend, fastapi_users
+
+from app.core.config import settings
+from app.core.security import auth_backend
+from app.schemas.user import UserCreate, UserRead, UserUpdate
+from app.services.user_service import fastapi_users
 
 app = FastAPI(
     title=settings.app_name,
