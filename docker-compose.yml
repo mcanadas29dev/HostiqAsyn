@@ -3,6 +3,9 @@ services:
     build: .
     image: mcanadas29dev/proyecto:latest
     container_name: hostiq-api
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+
     restart: unless-stopped
     ports:
       - "8150:8150"

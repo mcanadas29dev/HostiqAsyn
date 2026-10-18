@@ -75,7 +75,7 @@ class UserManager(UUIDIDMixin, BaseUserManager[User, uuid.UUID]):
                 subject="Verificación de tu correo en HostIQ",
                 body=(
                     f"Hola {user.nombre or 'Nuevo Usuario'} {user.apellidos or ''},\n\n"
-                    f"Gracias por registrarte en nuestra plataforma HostIQ.\n\n"
+                    f"Bienvenido! Gracias por registrarte en nuestra plataforma HostIQ.\n\n"
                     f"Confirma tu correo para seguir el proceso de alta en HostIQ, "
                     f"abriendo este enlace:\n\n"
                     f"{verify_url}\n\n"
